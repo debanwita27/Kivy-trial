@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
-
+#without using kv files
 class MainApp(App):
     def build(self):
         self.operators = ["/", "*", "+", "-"]
@@ -44,7 +44,7 @@ class MainApp(App):
         button_text = instance.text
 
         if button_text == "C":
-            # Clear the solution widget
+            # Clear the solution
             self.solution.text = ""
         else:
             if current and (
@@ -67,6 +67,7 @@ class MainApp(App):
                 solution = str(eval(self.solution.text))
                 self.solution.text = solution
             except Exception:
+                #display error message for logical errors.Would've exited the code otherwise.
                 self.solution.text = "Error"
 
 if __name__ == "__main__":
